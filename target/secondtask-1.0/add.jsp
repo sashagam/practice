@@ -8,14 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Editing or Adding</title>
     <link rel="stylesheet" href="resources/main.css" type="text/css">
 </head>
 <body>
 <form action="add" method="post">
 
     <table class="table">
-        <caption>Edit </caption>
+        <caption>${caption} </caption>
         <tr>
             <th>Fruit name:</th>
             <th>

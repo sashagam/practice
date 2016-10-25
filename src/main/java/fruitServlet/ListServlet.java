@@ -20,11 +20,7 @@ public class ListServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        List<Fruit> allFruit = fruitBean.getAll();
-
-        req.setAttribute("fruits",allFruit);
-        req.getRequestDispatcher("/list.jsp").forward(req, resp);
+        doGet(req, resp);
     }
 
     @Override

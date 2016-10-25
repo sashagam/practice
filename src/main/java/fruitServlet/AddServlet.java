@@ -26,9 +26,10 @@ public class AddServlet extends HttpServlet {
         if (req.getParameter("edit") != null){
             long id = Long.valueOf(req.getParameter("edit"));
             Fruit fruit = fruitBean.get(id);
-
+            req.setAttribute("caption", "Edit");
             req.setAttribute("fruit", fruit);
         }
+        else req.setAttribute("caption", "Adding");
 
         req.getRequestDispatcher("/add.jsp").forward(req,resp);
     }
@@ -37,12 +38,19 @@ public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         req.setCharacterEncoding("UTF-8");
+        double calories;
 
-        String fruitName = req.getParameter("fruit");
-        String color = req.getParameter("color");
-        double calories = Double.valueOf(req.getParameter("calories").replace(",","."));
+        if (req.getParameter("calories").trim().equals(""))
+             calories = 0.0;
+        else calories = Double.valueOf(req.getParameter("calories").replace(",",".").trim());
+
+        String fruitName = req.getParameter("fruit").trim();
+        String color = req.getParameter("color").trim();
 
 
+        if (fruitName.equals("") || color.equals(""))
+            req.getRequestDispatcher("/error.jsp").forward(req,resp);
+        else{
         if (!req.getParameter("id").equals("")){
             long id = Long.valueOf(req.getParameter("id"));
             Fruit fruit = fruitBean.get(id);
@@ -54,5 +62,6 @@ public class AddServlet extends HttpServlet {
             fruitBean.add(new Fruit(fruitName, color, calories));
         }
         resp.sendRedirect("list");
+        }
     }
 }
