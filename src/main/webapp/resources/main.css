@@ -40,6 +40,10 @@
     box-shadow: 2px 2px 0 0 #a22800;
     position: relative;
     text-decoration: none;
+    font-family: "Lucida Grande", sans-serif;
+
+    font-weight: initial;
+    font-size: 15px;
     color: black;
 }
 .table a:hover {
@@ -59,7 +63,7 @@
     background: #F79361;
     box-shadow: 2px 2px 0 0 #a22800;
     position: relative;
-    margin-left: 115px;
+    margin-left: 10px;
 }
 .table input.sub:hover {
     box-shadow: none;
@@ -92,4 +96,8 @@ input[type="text"] {
     font-size: initial;
     padding-left: inherit;
     font-family: "Lucida Grande", sans-serif;
+}
+.table a.cancel {
+    margin-left: 21px;
+    padding: 4.3px 17px;
 }

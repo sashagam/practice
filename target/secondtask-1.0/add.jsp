@@ -10,9 +10,10 @@
 <head>
     <title>Editing or Adding</title>
     <link rel="stylesheet" href="resources/main.css" type="text/css">
+    <script src="resources/main.js"></script>
 </head>
 <body>
-<form action="add" method="post">
+<form name = "myForm" action="add" method="post" onsubmit="return validateForm()">
 
     <table class="table">
         <caption>${caption} </caption>
@@ -35,28 +36,21 @@
             <th>
                 <label for="calories">
                     <input type="text" id="calories" onkeyup="return proverka(this);" value="${fruit.calories}" name="calories" />
-                    <script>
-                        function proverka(input) {
-                            ch = input.value.replace(/[^\d,.]/g, '');
-                            document.getElementById('calories').onkeypress = function (e) {
-                                if (this.value.indexOf(".") != '-1' || this.value.indexOf(",") != '-1') {
-                                    return !(/[.,]/.test(String.fromCharCode(e.charCode)));
-                                }
-                            }
-                            input.value = ch;
-                        }
-                    </script>
                 </label> </th>
         </tr>
         <tr class="bot">
-            <th></th>
-            <th><input type="submit" value="Save" class="sub"/></th>
+            <th>
+            </th>
+            <th>
+                <a href="main" class="cancel">Cancel</a>
+                <input type="submit" value="Save" class="sub"/>
+            </th>
         </tr>
 
         <input type="hidden" name="id" value="${fruit.id}" />
     </table>
-
-
 </form>
+
+
 </body>
 </html>
